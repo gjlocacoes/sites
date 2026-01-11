@@ -2,41 +2,6 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Login Admin</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body{background:#111;font-family:Arial;color:#fff;display:flex;justify-content:center;align-items:center;height:100vh}
-.box{background:#222;padding:30px;border-radius:10px;width:300px}
-input,button{width:100%;padding:10px;margin:8px 0}
-button{background:#0a7cff;color:#fff;border:none}
-</style>
-</head>
-<body>
-
-<div class="box">
-<h2>Área Administrativa</h2>
-<input id="user" placeholder="Usuário">
-<input id="pass" type="password" placeholder="Senha">
-<button onclick="login()">Entrar</button>
-</div>
-
-<script>
-function login(){
-  if(user.value==="admin" && pass.value==="1234"){
-    localStorage.setItem("logado","sim");
-    location.href="admin.html";
-  } else {
-    alert("Usuário ou senha incorretos");
-  }
-}
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
 <title>Painel Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
