@@ -2,82 +2,155 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Painel Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ofertas Imperdíveis | Links Oficiais</title>
+
 <style>
-body{font-family:Arial;background:#f2f2f2;padding:20px}
-.box{max-width:600px;margin:auto;background:#fff;padding:20px;border-radius:10px}
-input,textarea,button{width:100%;padding:10px;margin:5px 0}
-button{border:none;color:#fff}
-.add{background:#0a7cff}
-.del{background:#d9534f}
-.edit{background:#f0ad4e}
-.product{border-bottom:1px solid #ccc;padding:10px 0}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f4;
+}
+
+header {
+  background: #111;
+  color: #fff;
+  padding: 30px 15px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+header p {
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 25px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+}
+
+.product img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.product h3 {
+  margin: 12px 0 6px;
+}
+
+.price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: block;
+  padding: 12px;
+  margin: 10px 15px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.shopee { background: #ff5722; }
+.ml { background: #ffe600; color: #000; }
+
+footer {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 18px;
+  margin-top: 40px;
+  font-size: 14px;
+}
 </style>
 </head>
+
 <body>
 
-<div class="box">
-<h2>Cadastro de Produtos</h2>
+<header>
+  <h1>🔥 Ofertas Imperdíveis</h1>
+  <p>Produtos selecionados com links oficiais da Shopee e Mercado Livre</p>
+</header>
 
-<input id="nome" placeholder="Nome">
-<textarea id="descricao" placeholder="Descrição"></textarea>
-<input id="preco" placeholder="Preço">
-<input id="imagem" placeholder="URL da imagem">
-<input id="whats" placeholder="WhatsApp">
-<button class="add" onclick="add()">Adicionar</button>
+<div class="container">
 
-<hr>
-<div id="lista"></div>
+  <div class="products">
+
+    <!-- Guarda roupa de casal -->
+    <div class="product">
+      <img src="guarda roupa1.jpg" alt="Produto Shopee">
+      <h3>Produto Exemplo Shopee</h3>
+      <p class="price">A partir de R$ 930,90</p>
+
+      <a class="btn shopee"
+         href="https://s.shopee.com.br/10wakgKoT7"
+         target="_blank">
+         Comprar na Shopee
+      </a>
+    </div>
+
+    <!-- PRODUTO 2 -->
+    <div class="product">
+      <img src="imagens/produto2.jpg" alt="Produto Mercado Livre">
+      <h3>Produto Exemplo Mercado Livre</h3>
+      <p class="price">A partir de R$ 129,90</p>
+
+      <a class="btn ml"
+         href="SEU_LINK_DE_AFILIADO_MERCADO_LIVRE"
+         target="_blank">
+         Comprar no Mercado Livre
+      </a>
+    </div>
+
+    <!-- PRODUTO 3 -->
+    <div class="product">
+      <img src="imagens/produto3.jpg">
+      <h3>Produto Dupla Plataforma</h3>
+      <p class="price">Confira o melhor preço</p>
+
+      <a class="btn shopee"
+         href="LINK_AFILIADO_SHOPEE"
+         target="_blank">
+         Shopee
+      </a>
+
+      <a class="btn ml"
+         href="LINK_AFILIADO_ML"
+         target="_blank">
+         Mercado Livre
+      </a>
+    </div>
+
+  </div>
+
 </div>
 
-<script>
-if(localStorage.getItem("logado")!=="sim"){
-  location.href="index.html";
-}
-
-let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
-const lista = document.getElementById("lista");
-
-function render(){
-  lista.innerHTML="";
-  produtos.forEach((p,i)=>{
-    lista.innerHTML+=`
-    <div class="product">
-      <strong>${p.nome}</strong> - R$ ${p.preco}<br>
-      <button class="edit" onclick="edit(${i})">Editar</button>
-      <button class="del" onclick="del(${i})">Excluir</button>
-    </div>`;
-  });
-  localStorage.setItem("produtos",JSON.stringify(produtos));
-}
-render();
-
-function add(){
-  produtos.push({
-    nome:nome.value,
-    descricao:descricao.value,
-    preco:preco.value,
-    imagem:imagem.value,
-    whats:whats.value
-  });
-  render();
-}
-
-function del(i){
-  produtos.splice(i,1);
-  render();
-}
-
-function edit(i){
-  nome.value=produtos[i].nome;
-  descricao.value=produtos[i].descricao;
-  preco.value=produtos[i].preco;
-  imagem.value=produtos[i].imagem;
-  whats.value=produtos[i].whats;
-  del(i);
-}
-</script>
+<footer>
+  <p>🔗 Site afiliado — Compras realizadas nos links podem gerar comissão</p>
+</footer>
 
 </body>
 </html>
